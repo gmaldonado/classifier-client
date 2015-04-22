@@ -1,0 +1,23 @@
+
+
+<%= form_tag("/", method: "get") do %>
+	<% index.each do |field|%>
+		<%= label_tag(:name, field['name']) %>
+		
+		<% if field['dataType'] == 'string' %>
+			<%= text_field_tag(:name) %>
+		
+		<% elsif field['dataType'] == 'int' %>
+			<%= number_field(field['name'], in: 0.0..20000000.0, step: 1) %>
+
+		<% elsif field['dataType'] == 'float' %>
+			<%= number_field(:name, :dataType, in: 0.0..20000000.0, step: 0.1) %>
+
+		<% elsif field['dataType'] == 'file' %>
+			  <%= file_field_tag field['name'] %>
+		<% end%>
+
+		<br>
+	<%end%>
+	<%= submit_tag("Submit") %>
+<%end%>
