@@ -15,6 +15,10 @@
 
 		<% elsif field['dataType'] == 'file' %>
 			  <%= file_field_tag field['name'] %>
+		<%elsif field['dataType'] == 'boolean' %>
+			  <%= check_box_tag(:dataType) %>
+		<%elsif field['dataType'] == 'list' %>
+			  <%= select_tag(:dataType, options_for_select(field['selectableItems'])) %>
 		<% end%>
 
 		<br>
